@@ -9,6 +9,7 @@
     'summary': """
         Odoo School
         Lesson 6-2: Access rights and record rules. 
+        Create A. Hurin
     """,
     'license': 'LGPL-3',
     'author': 'Garazd Creation',
