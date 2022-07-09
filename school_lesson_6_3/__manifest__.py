@@ -9,6 +9,7 @@
     'summary': """
         Odoo School
         Lesson 6-3: Translating. 
+        Create A.Hurin
     """,
     'license': 'LGPL-3',
     'author': 'Garazd Creation',
