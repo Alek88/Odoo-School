@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_hospital_doctor,hr_hospital_doctor,model_hr_hospital_doctor,base.group_user,1,1,1,1
+access_hr_hospital,hr_hospital,model_hr_hospital,base.group_user,1,1,1,1
+access_hr_hospital_diagnosis,hr_hospital_diagnosis,model_hr_hospital_diagnosis,base.group_user,1,1,1,1
+access_hr_hospital_patient_card,hr_hospital_patient_card,model_hr_hospital_patient_card,base.group_user,1,1,1,1
+access_hr_hospital_patient,hr_hospital_patient,model_hr_hospital_patient,base.group_user,1,1,1,1

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    # menu root
+    <menuitem id='menu_hr_hospital'
+                name='Hospital'
+                sequence='0'
+                />
+
+    # submenu hr_hospital
+    <record id='action_hr_hospital' model='ir.actions.act_window'> 
+        <field name='name'>Hospital</field>
+        <field name='res_model'>hr.hospital</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This page will contain general information about the hospital.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_hospital'
+                name='Hospitals'
+                parent='menu_hr_hospital'
+                action='action_hr_hospital'
+                sequence='0'
+                />
+
+    # submenu patient
+    <record id='action_patient' model='ir.actions.act_window'> 
+        <field name='name'>Patients</field>
+        <field name='res_model'>hr.hospital.patient</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will store information about our patients
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_patient'
+                name='Patients'
+                parent='menu_hr_hospital'
+                action='action_patient'
+                sequence='1'
+                />
+
+    # submenu doctor
+    <record id='action_doctor' model='ir.actions.act_window'> 
+        <field name='name'>Doctors</field>
+        <field name='res_model'>hr.hospital.doctor</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will display the doctors of our hospital.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_doctor'
+                name='Doctors'
+                parent='menu_hr_hospital'
+                action='action_doctor'
+                sequence='2'
+                />
+
+    # submenu diagnosis
+    <record id='action_diagnosis' model='ir.actions.act_window'> 
+        <field name='name'>Diagnoses</field>
+        <field name='res_model'>hr.hospital.diagnosis</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="view_id" ref="diagnosis_tree_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will display the diagnoses of our patients.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_diagnosis'
+                name='Diagnoses'
+                parent='menu_hr_hospital'
+                action='action_diagnosis'
+                sequence='3'
+                />
+
+    # submenu patient card
+    <record id='action_patient_card' model='ir.actions.act_window'> 
+        <field name='name'>Patients cards</field>
+        <field name='res_model'>hr.hospital.patient.card</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will display the patients cards.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id='menu_patient)card'
+                name='Patient card'
+                parent='menu_hr_hospital'
+                action='action_patient_card'
+                sequence='4'
+                />
+</odoo>

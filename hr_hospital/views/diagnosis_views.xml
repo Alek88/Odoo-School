@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="diagnosis_tree_view" model="ir.ui.view">
+        <field name="name">Diagnosis Tree</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="diagnosis_form_view" model="ir.ui.view">
+        <field name="name">Diagnosis Form</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <form string="Diagnosis">
+                <field name="name"/>
+            </form>
+        </field>
+    </record>
+</odoo>
