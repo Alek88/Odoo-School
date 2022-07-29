@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="research_tree_view" model="ir.ui.view">
+        <field name="name">Research Tree</field>
+        <field name="model">hr.hospital.research</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="type_research_ids"/>
+                <field name="type_sample_id"/>
+                <field name="conclusion"/>
+                <field name="diagnosis_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='action_research' model='ir.actions.act_window'> 
+        <field name='name'>Research</field>
+        <field name='res_model'>hr.hospital.research</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will store information about all researchs
+            </p>
+        </field>
+    </record>
+</odoo>

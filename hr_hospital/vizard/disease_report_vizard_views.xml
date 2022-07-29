@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo> 
+ 
+    <record id="hr_hospital_disease_report_vizard_view_form" model="ir.ui.view">
+        <field name="name">hr.hospital.disease.report.vizard</field>
+        <field name="model">hr.hospital.disease.report.vizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="report_date"/>
+                    <field name="disease_id"/>
+                </group>
+                <footer>
+                    <button name="calculate_disease" 
+                        type="object" 
+                        string="Show" 
+                        class="btn-primary"/>
+                    <button special="cancel" string="Cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>  
+
+
+    <record id='action_disease_report_wizard' model='ir.actions.act_window'> 
+        <field name='name'>Disease report</field>
+        <field name='res_model'>hr.hospital.disease.report.vizard</field>
+        <field name='view_mode'>form</field> 
+        <field name='target'>new</field> 
+        <field name='binding_model_id' ref='model_hr_hospital_doctor'/> 
+        <field name='binding_view_types'>form</field> 
+        <field name='binding_type'>report</field> 
+    </record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="doctor_visit_tree_view" model="ir.ui.view">
+        <field name="name">Doctor's visit Tree</field>
+        <field name="model">hr.hospital.doctor.visit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="doctor_id"/>
+                <field name="visit_date"/>
+                <field name="diagnosis_id"/>
+                <field name="research"/>
+                <field name="recomendation"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='action_doctor_visit' model='ir.actions.act_window'> 
+        <field name='name'>Doctors visit</field>
+        <field name='res_model'>hr.hospital.doctor.visit</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will display the doctor's visit.
+            </p>
+        </field>
+    </record>   
+</odoo>

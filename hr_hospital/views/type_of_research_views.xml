@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="type_of_research_tree_view" model="ir.ui.view">
+        <field name="name">Type of research Tree</field>
+        <field name="model">hr.hospital.type.of.research</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="parent_id"/>
+                <field name="chield_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='action_type_of_research' model='ir.actions.act_window'> 
+        <field name='name'>Type of research</field>
+        <field name='res_model'>hr.hospital.type.of.research</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will store information about all types of research
+            </p>
+        </field>
+    </record>
+</odoo>
