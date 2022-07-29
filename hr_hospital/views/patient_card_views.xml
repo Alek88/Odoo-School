@@ -17,4 +17,15 @@
             </form>
         </field>
     </record>
+
+    <record id='action_patient_card' model='ir.actions.act_window'> 
+        <field name='name'>Patients cards</field>
+        <field name='res_model'>hr.hospital.patient.card</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will display the patients cards.
+            </p>
+        </field>
+    </record>
 </odoo>

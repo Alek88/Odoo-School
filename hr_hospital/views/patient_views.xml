@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="patient_form_view" model="ir.ui.view">
-        <field name="name">Doctor Form</field>
+    <record id="patient_tree_view" model="ir.ui.view">
+        <field name="name">Petient Tree</field>
         <field name="model">hr.hospital.patient</field>
         <field name="arch" type="xml">
-            <form string="Patient">
+            <tree>
                 <field name="name"/>
-            </form>
+                <field name="birthday_date"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="pasport_series"/>
+                <field name="pasport_number"/>
+                <field name="pasport_issued_date"/>
+                <field name="pasport_issued_by"/>
+                <field name="photo"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id='action_patient' model='ir.actions.act_window'> 
+        <field name='name'>Patients</field>
+        <field name='res_model'>hr.hospital.patient</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will store information about our patients
+            </p>
         </field>
     </record>
 </odoo>

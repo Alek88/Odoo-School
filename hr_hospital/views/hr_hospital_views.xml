@@ -9,4 +9,15 @@
             </tree>
         </field>
     </record>
+
+    <record id='action_hr_hospital' model='ir.actions.act_window'> 
+        <field name='name'>Hospital</field>
+        <field name='res_model'>hr.hospital</field> 
+        <field name='view_mode'>tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This page will contain general information about the hospital.
+            </p>
+        </field>
+    </record>
 </odoo>
