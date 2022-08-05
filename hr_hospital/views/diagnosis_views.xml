@@ -10,17 +10,73 @@
                 <field name="patient_id"/>
                 <field name="disease_ids"/>
                 <field name="treatment"/>
-                <field name="research_ids"/>
+                <field name="res_ids"/>
                 <field name="diagnisis_date"/>
                 <field name="comment"/>
             </tree>
         </field>
     </record>
 
+    <record id="diagnosis_torm_view" model="ir.ui.view">
+        <field name="name">diagnosis.torm.view</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="diagnisis_date"/>
+                </group>
+                <notebook>
+                    <sheet string="Data">
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="patient_id"/> 
+                            <field name="res_ids"/>                          
+                        </group> 
+                    </sheet>
+                    <sheet string="Diseases">
+                        <field name="disease_ids"/> 
+                    </sheet>
+                    <sheet string="Treatment">
+                        <field name="treatment"/>
+                    </sheet>
+                    <sheet string="Comment">
+                        <field name="comment"/>
+                    </sheet>
+                </notebook>     
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_diagnosis_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.pivot</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <pivot display_quantity="1">
+                <field name="disease_ids" type="row"/>
+                <field name="res_ids" type="row"/>
+                <field name="diagnisis_date" interval="years" type="col"/>
+                <field name="diagnisis_date" interval="month" type="col"/>
+            </pivot>
+        </field>
+     </record>  
+
+     <record id="hr_hospital_diagnosis_graph" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.graph</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="doctor_id" type="row"/>
+                <field name="diagnisis_date" type="col" interval="month"/>
+                <field name="disease_ids" type="col"/>
+            </graph>
+        </field>
+     </record> 
+
     <record id='action_diagnosis' model='ir.actions.act_window'> 
         <field name='name'>Diagnoses</field>
         <field name='res_model'>hr.hospital.diagnosis</field> 
-        <field name='view_mode'>tree,form</field>
+        <field name='view_mode'>tree,form,pivot,graph</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 This list will display the diagnoses of our patients.

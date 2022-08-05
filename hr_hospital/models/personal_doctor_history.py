@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 class HrHospitalPersonalDoctorHistory(models.Model):
-    _name = 'hr.hospital.personal.doctor.history'
+    _name = 'hr.hospital.pers.doc.history'
     _description = "Personal doctor history"
     active = fields.Boolean(default=True)
     name = fields.Char()

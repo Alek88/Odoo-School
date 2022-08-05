@@ -1,27 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="patient_card_form_view" model="ir.ui.view">
-        <field name="name">Patient Card Form</field>
+    <record id="patient_card_tree_view" model="ir.ui.view">
+        <field name="name">patient.card.tree.view</field>
         <field name="model">hr.hospital.patient.card</field>
         <field name="arch" type="xml">
-            <form string="Patient card">
-                <sheet>
-                    <div class='oe_title'>
-                        <h3>
-                            <field name='name'/>
-                        </h3>
-                    </div>
-                    <field name='partient'/>
-                    <field name='disease_history'/>
-                </sheet>
+            <tree>
+                <field name="name"/>
+                <field name="partient_id"/>
+                <field name="disease_history_ids"/>
+                <field name="doctor_appointment_history_ids"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="patient_card_form_view" model="ir.ui.view">
+        <field name="name">patient.card.form.view</field>
+        <field name="model">hr.hospital.patient.card</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class='oe_button_box' name="button_box">
+                    <button name="%(action_personal_doctor_history)d" 
+                            type="action"
+                            icon="fa-book">
+                        <div class="o_field_widget o_start_info">
+                            <span class="o_stat_text">Doctor list</span>
+                        </div>
+                    </button>  
+                    <button name="%(action_disease_history)d" 
+                            type="action"
+                            icon="fa-book">
+                        <div class="o_field_widget o_start_info">
+                            <span class="o_stat_text">Disease history</span>
+                        </div>
+                     </button>       
+                </div> 
+                <h2><field name="name"/></h2>
+                <field name="partient_id"/>
+                <notebook>
+                    <page string="Disease history">
+                        <field name="disease_history_ids"/>  
+                    </page>
+                    <page string="Doctor visit">
+                        <field name="doctor_appointment_history_ids"/>  
+                    </page>
+                </notebook>
             </form>
         </field>
     </record>
 
-    <record id='action_patient_card' model='ir.actions.act_window'> 
-        <field name='name'>Patients cards</field>
-        <field name='res_model'>hr.hospital.patient.card</field> 
-        <field name='view_mode'>tree,form</field>
+    <record id="action_patient_card" model="ir.actions.act_window"> 
+        <field name="name">Patients cards</field>
+        <field name="res_model">hr.hospital.patient.card</field> 
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 This list will display the patients cards.

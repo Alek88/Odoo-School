@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<odoo> 
     <record id="doctor_visit_tree_view" model="ir.ui.view">
-        <field name="name">Doctor's visit Tree</field>
+        <field name="name">doctor.visit.tree.view</field>
         <field name="model">hr.hospital.doctor.visit</field>
         <field name="arch" type="xml">
             <tree>
@@ -9,16 +9,53 @@
                 <field name="doctor_id"/>
                 <field name="visit_date"/>
                 <field name="diagnosis_id"/>
-                <field name="research"/>
-                <field name="recomendation"/>
+                <field name="research_id"/>
             </tree>
         </field>
     </record>
 
+    <record id="doctor_visit_form_view" model="ir.ui.view">
+        <field name="name">doctor.visit.form.view</field>
+        <field name="model">hr.hospital.doctor.visit</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="visit_date"/>
+                    <field name="stop_visit_date"/>
+                </group>
+                <notebook>
+                    <sheet string="Data">
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="patient_id"/>
+                            <field name="diagnosis_id"/>
+                            <field name="research_id"/>
+                        </group>
+                    </sheet>
+                    <sheet string="Recomendation">
+                        <field name="recomendation"/>
+                    </sheet>
+                </notebook>
+            </form>
+        </field>
+    </record>
+ 
+    
+    <record id="doctor_visit_calendar" model="ir.ui.view">
+        <field name="name">Doctor visit calendar</field>
+        <field name="model">hr.hospital.doctor.visit</field>
+        <field name="arch" type="xml">
+           <calendar string="Calendar" date_start="visit_date" date_stop="stop_visit_date">
+               <field name="patient_id"/>
+           </calendar>
+        </field>
+    </record>
+
     <record id='action_doctor_visit' model='ir.actions.act_window'> 
-        <field name='name'>Doctors visit</field>
+        <field name='name'>action.doctor.visit</field>
         <field name='res_model'>hr.hospital.doctor.visit</field> 
-        <field name='view_mode'>tree,form</field>
+        <field name='view_mode'>tree,form,calendar</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 This list will display the doctor's visit.

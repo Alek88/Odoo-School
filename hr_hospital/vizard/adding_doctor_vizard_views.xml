@@ -21,12 +21,13 @@
     </record>
 
     <record id='server_action_adding_doctor_wizard' model='ir.actions.act_window'> 
-        <field name='name'>Uppdate doctor</field>
+        <field name='name'>Cgange doctor</field>
         <field name='res_model'>hr.hospital.adding.doctor.vizard</field>
         <field name='view_mode'>form</field> 
         <field name='target'>new</field> 
         <field name='binding_model_id' ref='model_hr_hospital_patient'/> 
-        <field name='binding_view_types'>form</field> 
+        <field name='binding_view_types'>form,list</field> 
         <field name='binding_type'>action</field> 
     </record>
+    
 </odoo>

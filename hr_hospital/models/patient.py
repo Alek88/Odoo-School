@@ -32,7 +32,7 @@ class HrHospitalPatient(models.Model):
     def create(self, vals):
         new_record = super().create(vals)
         if 'doctor_id' in vals:
-            self.env['hr.hospital.personal.doctor.history'].create({
+            self.env['hr.hospital.pers.doc.history'].create({
                 'date': fields.date.today(),
                 'patient_id': new_record.id,
                 'doctor_id': vals.get('doctor_id'),        
@@ -44,7 +44,7 @@ class HrHospitalPatient(models.Model):
             return super().write(vals)
         for record in self:
             if record.doctor_id.id != vals.get('doctor_id'):
-                self.env['hr.hospital.personal.doctor.history'].create({
+                self.env['hr.hospital.pers.doc.history'].create({
                     'date': fields.date.today(),
                     'patient_id': record.id,
                     'doctor_id': vals.get('doctor_id'),        

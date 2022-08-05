@@ -5,87 +5,110 @@
                 sequence='0'
                 />
 
-    <menuitem id='menu_hospital'
-                name='Hospitals'
+    <menuitem id='menu_hr_treatment'
+                name='Treatment'
                 parent='menu_hr_hospital'
-                action='action_hr_hospital'
                 sequence='100'
                 />
 
+    <menuitem id='menu_hr_diagnoses'
+            name='Diagnoses'
+            parent='menu_hr_hospital'
+            sequence='200'
+            />
+
+    <!-- Treatment -->
+
     <menuitem id='menu_patient'
                 name='Patients'
-                parent='menu_hr_hospital'
+                parent='menu_hr_treatment'
                 action='action_patient'
-                sequence='200'
+                sequence='100'
                 />
 
     <menuitem id='menu_doctor'
                 name='Doctors'
-                parent='menu_hr_hospital'
+                parent='menu_hr_treatment'
                 action='action_doctor'
-                sequence='300'
+                sequence='200'
                 />
 
-    <menuitem id='menu_diagnosis'
-                name='Diagnoses'
-                parent='menu_hr_hospital'
-                action='action_diagnosis'
-                sequence='400'
+    <menuitem id='menu_doctor_visit'
+                name="Doctor's visit"
+                parent='menu_hr_treatment'
+                action='action_doctor_visit'
+                sequence='300'
                 />
 
     <menuitem id='menu_patientcard'
                 name='Patient card'
-                parent='menu_hr_hospital'
+                parent='menu_hr_treatment'
                 action='action_patient_card'
-                sequence='500'
-                />
-
-    <menuitem id='menu_contact_person'
-                name='Contact person'
-                parent='menu_hr_hospital'
-                action='action_contact_person'
-                sequence='600'
-                />
-
-    <menuitem id='menu_disease'
-                name='Disease'
-                parent='menu_hr_hospital'
-                action='action_disease'
-                sequence='700'
-                />
-    
-    <menuitem id='menu_doctor_visit'
-                name="Doctor's visit"
-                parent='menu_hr_hospital'
-                action='action_doctor_visit'
-                sequence='800'
+                sequence='400'
                 />
     
     <menuitem id='menu_personal_doctor_history'
                 name="Personal doctor history"
-                parent='menu_hr_hospital'
+                parent='menu_hr_treatment'
                 action='action_personal_doctor_history'
-                sequence='900'
+                sequence='500'
+                />
+    
+    <menuitem id='menu_contact_person'
+                name='Contact person'
+                parent='menu_hr_treatment'
+                action='action_contact_person'
+                sequence='600'
+                />
+
+    <!-- Diagnoses -->
+
+    <menuitem id='menu_diagnosis'
+                name='Diagnoses'
+                parent='menu_hr_diagnoses'
+                action='action_diagnosis'
+                sequence='100'
+                />
+
+    <menuitem id='menu_disease'
+                name='Disease'
+                parent='menu_hr_diagnoses'
+                action='action_disease'
+                sequence='200'
                 />
 
     <menuitem id='menu_research'
                 name="Research"
-                parent='menu_hr_hospital'
+                parent='menu_hr_diagnoses'
                 action='action_research'
-                sequence='1000'
+                sequence='300'
                 />
 
     <menuitem id='menu_type_of_research'
                 name="Type of research"
-                parent='menu_hr_hospital'
+                parent='menu_hr_diagnoses'
                 action='action_type_of_research'
-                sequence='1100'
+                sequence='400'
                 />
 
     <menuitem id='menu_type_of_sample'
                 name="Type of sample"
-                parent='menu_hr_hospital'
+                parent='menu_hr_diagnoses'
                 action='action_type_of_sample'
-                sequence='1200'
+                sequence='500'
+                />
+    
+    <menuitem id='menu_type_of_analisis'
+                name="Analisis"
+                parent='menu_hr_diagnoses'
+                action='action_analisis'
+                sequence='600'
+                />
+
+    <menuitem id='menu_type_of_disease_history'
+                name="Disease history"
+                parent='menu_hr_diagnoses'
+                action='action_disease_history'
+                sequence='700'
                 />
 </odoo>

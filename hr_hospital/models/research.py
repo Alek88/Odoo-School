@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class HrHospitalResearch(models.Model):
@@ -8,12 +8,10 @@ class HrHospitalResearch(models.Model):
     name = fields.Char()
     patient_id = fields.Many2one(comodel_name='hr.hospital.patient')
     doctor_id = fields.Many2one(comodel_name='hr.hospital.doctor')
-    type_research_ids = fields.Many2many(comodel_name='hr.hospital.type.of.research')
+    type_research_id = fields.Many2one(comodel_name='hr.hospital.type.of.research')
     type_sample_id = fields.Many2one(comodel_name='hr.hospital.type.of.sample')
     conclusion = fields.Text()
     diagnosis_ids = fields.Many2many(comodel_name='hr.hospital.diagnosis',
                                 relation='hr_hospital_research_diagnosis',
                                 column1='diagnosis',
-                                column2='research',
-                                index=True)
-    
+                                column2='research')

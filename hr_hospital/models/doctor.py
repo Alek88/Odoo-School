@@ -10,8 +10,17 @@ class HrHospitalDoctor(models.Model):
     speciality = fields.Char()
     is_intern = fields.Boolean()
     mentor_id=fields.Many2one(comodel_name='hr.hospital.doctor',
-                              string='Mentor',
+                              string='Mentor',      
                               domain=[('is_intern', '=', False)])
+    
+    intern_ids=fields.One2many(comodel_name='hr.hospital.doctor',
+                              string='Interns',
+                              inverse_name='mentor_id',   
+                              domain=[('is_intern', '=', True)])
+    
+    patient_ids = fields.One2many(comodel_name='hr.hospital.patient',
+                                  inverse_name='doctor_id')
+                                  
                                
     @api.constrains('mentor_id')
     def cheking_mentor_id(self):
@@ -23,4 +32,3 @@ class HrHospitalDoctor(models.Model):
                 if not record.mentor_id:
                     raise ValidationError("For an intern, it is necessary to specify a mentor.")  
             return
-                

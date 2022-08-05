@@ -8,11 +8,27 @@
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="doctor_id"/>
-                <field name="type_research_ids"/>
+                <field name="type_research_id"/>
                 <field name="type_sample_id"/>
                 <field name="conclusion"/>
                 <field name="diagnosis_ids"/>
             </tree>
+        </field>
+    </record>
+
+    <record id="research_tree_view" model="ir.ui.view">
+        <field name="name">Research Tree</field>
+        <field name="model">hr.hospital.research</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="type_research_id"/>
+                <field name="type_sample_id"/>
+                <field name="conclusion"/>
+                <field name="diagnosis_ids"/>
+            </form>
         </field>
     </record>
 

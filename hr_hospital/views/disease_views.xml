@@ -10,6 +10,19 @@
         </field>
     </record>
 
+    <record id="hr_hospital_disease_search" model="ir.ui.view">
+        <field name="name">hr.hospital.disease.search</field>
+        <field name="model">hr.hospital.disease</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <searchpanel view_types='tree,pivot'> 
+                    <field name="parent_id" icon="fa-building" enable_counters="2"/>
+                </searchpanel>
+            </search>
+        </field>
+     </record>     
+
     <record id='action_disease' model='ir.actions.act_window'> 
         <field name='name'>Disease</field>
         <field name='res_model'>hr.hospital.disease</field> 

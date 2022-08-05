@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="analisis_tree_view" model="ir.ui.view">
+        <field name="name">Analisis Tree</field>
+        <field name="model">hr.hospital.analisis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="patient_id"/>
+                <field name="disease_id"/>
+                <field name="doctor_id"/>
+                <field name="type_of_sample_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="analisis_form_view" model="ir.ui.view">
+        <field name="name">Research Form</field>
+        <field name="model">hr.hospital.analisis</field>
+        <field name="arch" type="xml">
+            <form>
+                <h2><field name="name"/></h2>
+                <group>
+                    <field name="date"/>
+                    <field name="patient_id"/>
+                    <field name="disease_id"/>
+                    <field name="doctor_id"/>
+                    <field name="type_of_sample_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_analisis_search" model="ir.ui.view">
+        <field name="name">hr.hospital.analisis.search</field>
+        <field name="model">hr.hospital.analisis</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="patient_name"/>
+                <field name="patient_phone"/>
+                <group string="Group type research">
+                    <filter name="type_of_sample_id" 
+                            string="Group by type of sample"
+                            context="{'group_by':'type_of_sample_id'}"/>
+                </group>
+            </search>
+        </field>
+     </record>  
+
+     <record id="hr_hospital_analisis_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.analisis.pivot</field>
+        <field name="model">hr.hospital.analisis</field>
+        <field name="arch" type="xml">
+            <pivot display_quantity="1">
+                <field name="doctor_id" type="row"/>
+                <field name="type_of_sample_id" type="row"/>
+                <field name="date" interval="month" type="col"/>
+            </pivot>
+        </field>
+     </record> 
+
+    <record id='action_analisis' model='ir.actions.act_window'> 
+        <field name='name'>Analisis</field>
+        <field name='res_model'>hr.hospital.analisis</field> 
+        <field name='view_mode'>tree,form,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                This list will store information about all analisis
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -7,11 +7,11 @@ class HrHospitalDoctorVisit(models.Model):
     active = fields.Boolean(default=True)
     name = fields.Char()
     doctor_id = fields.Many2one(comodel_name='hr.hospital.doctor',
-                                required=True,
-                                index=True, )
-    visit_date = fields.Datetime(defoult=fields.Date.today, )
-    diagnosis_id = fields.Many2one(comodel_name='hr.hospital.diagnosis',
-                                   index=True)
-    research = fields.Many2many(comodel_name='hr.hospital.research')
-    recomendation = fields.Text()
-   
+                                required=True)
+    visit_date = fields.Datetime(default=fields.Date.today)
+    stop_visit_date = fields.Datetime(default=fields.Date.today)
+    diagnosis_id = fields.Many2one(comodel_name='hr.hospital.diagnosis')
+    research_id = fields.Many2one(comodel_name='hr.hospital.research')
+    patient_id = fields.Many2one(comodel_name='hr.hospital.patient',
+                                 required = True)
+    recomendation = fields.Text(string='Recomendation')

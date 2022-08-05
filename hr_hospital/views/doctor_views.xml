@@ -1,26 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="doctor_tree_view" model="ir.ui.view">
-        <field name="name">Doctor Tree</field>
+        <field name="name">doctor.tree.view</field>
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
                 <field name="speciality"/>
+                <field name="is_intern"/>
                 <field name="gender"/>
                 <field name="phone"/>
                 <field name="email"/>
-                <field name="photo"/>
-                <field name="mentor_id"/>
-                <field name="is_intern"/>
             </tree>
         </field>
     </record>
 
+    <record id="doctor_form_view" model="ir.ui.view">
+        <field name="name">Doctor Form</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <h2><field name="name"/></h2>
+                <group>
+                    <field name="speciality"/>
+                    <field name="gender"/>
+                    <field name="is_intern"/>
+                </group>
+                <group string="Contact info">
+                    <field name="phone"/>
+                    <field name="email"/>
+                </group>
+                <notebook>
+                    <page string="Mentor" attrs="{'invisible':[('is_intern','=',False)]}">
+                        <field name="mentor_id"/>    
+                    </page>
+                    <page string="Interns" attrs="{'invisible':[('is_intern','=',True)]}">
+                        <field name="intern_ids" mode="kanban"/>
+                        <kanban>
+                            <fields name="name"/>
+                            <fields name="phone"/> 
+                            <fields name="email"/> 
+                            <templetes>
+                                <t t-name="kanban-box">
+                                    <div t-att-class="oe_kanban_card oe_kanban_global_click">
+                                        <div class="oe_kanban_details">
+                                            <fields name="name"/>
+                                            <fields name="phone"/>
+                                        </div>
+                                    </div>  
+                                </t>
+                            </templetes>
+                        </kanban>
+                    </page>
+                    <page string="Patients">
+                        <field name="patient_ids"/> 
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="doctor_kanban_view" model="ir.ui.view">
+        <field name="name">Doctors Kanban</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="speciality">
+                <templates>
+                    <field name='name'/>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <field name="name"/>
+                            <button type='action'  
+                                name='%(hr_hospital.action_new_doctor_visit_with_doctor_vizard)d'>New doctor visit</button>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hr_hospital_doctor_search" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.search</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter string="Is intern" name="filter_name" domain="[('is_intern', '=', True)]"/>
+                <filter string="Is mentor" name="filter_name" domain="[('is_intern', '!=', True)]"/>
+                <filter string="Is free" name="filter_name" domain="[('patient_ids', '=', False)]"/>       
+            </search>
+        </field>
+     </record>   
+
     <record id='action_doctor' model='ir.actions.act_window'> 
         <field name='name'>Doctors</field>
         <field name='res_model'>hr.hospital.doctor</field> 
-        <field name='view_mode'>tree,form</field>
+        <field name='view_mode'>kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 This list will display the doctors of our hospital.

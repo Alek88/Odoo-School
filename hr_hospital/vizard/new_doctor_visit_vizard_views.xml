@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="new_doctor_visit_vizard_view_form" model="ir.ui.view">
+        <field name="name">hr.hospital.new.doctor.visit.vizard</field>
+        <field name="model">hr.hospital.new.doctor.visit.vizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="visit_date"/>
+                    <field name="doctor_id"/>
+                    <field name="patient_id"/>
+                </group>
+                <footer>
+                    <button name="new_doctor_visit" 
+                        type="object" 
+                        string="New visit" 
+                        class="btn-primary"/>
+                    <button special="cancel" string="Cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>  
+
+    <record id='action_new_doctor_visit_with_pat_card_vizard' model='ir.actions.act_window'> 
+        <field name="context">{"default_patient_id": active_id}</field>
+        <field name='name'>New doctor visit</field>
+        <field name='res_model'>hr.hospital.new.doctor.visit.vizard</field>
+        <field name='view_mode'>form</field> 
+        <field name='target'>new</field> 
+        <field name='binding_model_id' ref='model_hr_hospital_patient_card'/> 
+        <field name='binding_view_types'>form</field> 
+        <field name='binding_type'>action</field> 
+    </record>
+
+    <record id='action_new_doctor_visit_with_doctor_vizard' model='ir.actions.act_window'> 
+        <field name="context">{"default_doctor_id": active_id}</field>
+        <field name='name'>New doctor visit</field>
+        <field name='res_model'>hr.hospital.new.doctor.visit.vizard</field>
+        <field name='view_mode'>form</field> 
+        <field name='target'>new</field> 
+        <field name='binding_model_id' ref='model_hr_hospital_doctor'/> 
+        <field name='binding_view_types'>form</field> 
+        <field name='binding_type'>action</field> 
+    </record>
+
+</odoo>
