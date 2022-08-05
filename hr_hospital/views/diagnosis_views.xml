@@ -10,7 +10,6 @@
                 <field name="patient_id"/>
                 <field name="disease_ids"/>
                 <field name="treatment"/>
-                <field name="res_ids"/>
                 <field name="diagnisis_date"/>
                 <field name="comment"/>
             </tree>
@@ -30,12 +29,14 @@
                     <sheet string="Data">
                         <group>
                             <field name="doctor_id"/>
-                            <field name="patient_id"/> 
-                            <field name="res_ids"/>                          
+                            <field name="patient_id"/>                          
                         </group> 
                     </sheet>
                     <sheet string="Diseases">
                         <field name="disease_ids"/> 
+                    </sheet>
+                    <sheet string="Researches">
+                        <field name="research_ids" widget="many2many_tags"/>
                     </sheet>
                     <sheet string="Treatment">
                         <field name="treatment"/>
@@ -54,8 +55,8 @@
         <field name="arch" type="xml">
             <pivot display_quantity="1">
                 <field name="disease_ids" type="row"/>
-                <field name="res_ids" type="row"/>
-                <field name="diagnisis_date" interval="years" type="col"/>
+                <field name="research_ids" type="row"/>
+                <field name="diagnisis_date" interval="year" type="col"/>
                 <field name="diagnisis_date" interval="month" type="col"/>
             </pivot>
         </field>

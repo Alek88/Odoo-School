@@ -16,7 +16,7 @@ class HrHospitalDiagnosis(models.Model):
     patient_id = fields.Many2one(comodel_name='hr.hospital.patient', 
                                  required=True, 
                                  index=True)
-    res_ids = fields.Many2many(comodel_name='hr.hospital.research', 
+    research_ids = fields.Many2many(comodel_name='hr.hospital.research', 
                                     relation='hr_hospital_research_diagnosis',
                                     column1='research',
                                     column2='diagnosis',

@@ -8,8 +8,8 @@
     'author': "Aleksander Gurin",
     'website': "http://www.hr_hospital.com",
     'category': 'Human Resources',
-    'version': '15.0.2.0.1',
-    'images' : [],
+    'version': '15.0.3.0.1',
+    'images' : ['images/hr_hospital.jpg'],
     'depends': [
         'base'
         ],
@@ -17,7 +17,7 @@
         'security/ir.model.access.csv',
         'vizard/adding_doctor_vizard_views.xml',
         'vizard/new_doctor_visit_vizard_views.xml',
-         'views/personal_doctor_history_view.xml',
+        'views/personal_doctor_history_view.xml',
         'views/disease_history_views.xml',
         'views/doctor_views.xml',
         'views/analisis_views.xml',
