@@ -1,5 +1,5 @@
 
-
+from . import hr_hospital
 from . import person
 from . import patient
 from . import patient_card

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="get_doctot_name_template">
+        <span t-esc="doc.name"/>     
+    </template>
+
+    <template id="get_patient_mild_template">
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.name"
+                t-attf-style="background-color: green"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.gender"
+                t-attf-style="background-color: green"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.phone"
+                t-attf-style="background-color: green"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.email"
+                t-attf-style="background-color: green"/>
+        </th>           
+    </template>
+
+    <template id="get_patient_average_template">
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.name"
+                t-attf-style="background-color: yellow"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.gender"
+                t-attf-style="background-color: yellow"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.phone"
+                t-attf-style="background-color: yellow"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.email"
+                t-attf-style="background-color: yellow"/>
+        </th>           
+    </template>
+
+    <template id="get_patient_severe_template">
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.name"
+                t-attf-style="background-color: red"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.gender"
+                t-attf-style="background-color: red"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.phone"
+                t-attf-style="background-color: red"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.email"
+                t-attf-style="background-color: red"/>
+        </th>             
+    </template>
+
+    <template id="get_patient_other_template">
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.name"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.gender"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.phone"/>
+        </th>
+        <th tyle="border: 1px solid black;"> 
+            <div t-field="patient.email"/>
+        </th>               
+    </template>
+
+    <template id="doctor_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <h2>
+                    <div style="text-align:right;"> 
+                        <div>
+                            <img t-att-src="image_data_uri(doc.hospital.logo)" alt="Logo"/>
+                        </div> 
+                        <strong>Hospital: </strong>
+                        <t t-call="hr_hospital.get_doctot_name_template"/>
+                        <br/>
+                        <strong>Doctor: </strong>
+                        <span t-esc="doc.name"/>
+                        <br/>
+                        <strong>Speciality: </strong>
+                        <span t-esc="doc.speciality"/> 
+                    </div>
+                </h2>
+                <div style="text-align:center;">
+                    <br/>
+                    <h2><strong>Activity history: </strong></h2>
+                    <br/>
+                    <h3><span t-esc="doc.activity_history"/> </h3>
+                </div>
+                <div>
+                    <br/>
+                    <strong>Patients: </strong>
+                    <table class="table-bordered"
+                           style="border: 1px solid black;"
+                           width="100%">
+                        <tr>
+                            <th>
+                                <t>Name</t>
+                            </th>
+                            <th>
+                                <t>Gender</t>
+                            </th>
+                            <th>
+                                <t>Phone</t>
+                            </th>
+                            <th>
+                                <t>Email</t>
+                            </th>
+                        </tr>
+                        <t t-foreach="doc.patient_ids" t-as="patient">  
+                            <span t-set="degree_of_morbidity" 
+                                t-value="patient._get_patient_disease(doc)"/>
+                            <tr style="border: 1px solid black;"> 
+                                <t t-if="degree_of_morbidity == 'mild'">
+                                    <t t-call="hr_hospital.get_patient_mild_template"/>     
+                                </t> 
+                                <t t-elif="degree_of_morbidity == 'average'">
+                                    <t t-call="hr_hospital.get_patient_average_template"/>    
+                                </t>  
+                                <t t-elif="degree_of_morbidity == 'severe'">
+                                    <t t-call="hr_hospital.get_patient_severe_template"/>   
+                                </t> 
+                                <t t-else="degree_of_morbidity == 'other'">
+                                    <t t-call="hr_hospital.get_patient_other_template"/>   
+                                </t>       
+                            </tr>
+                        </t>      
+                    </table>
+                </div>
+                <br/>
+                <br/>
+                <strong>Full name: </strong>
+                <t t-call="hr_hospital.get_doctot_name_template"/>
+                <br/>
+                <strong>Date: </strong>
+                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>   
+            </t>
+        </t>
+    </template>
+</odoo>

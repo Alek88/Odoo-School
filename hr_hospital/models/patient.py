@@ -52,5 +52,11 @@ class HrHospitalPatient(models.Model):
             super().write(vals) 
         return True
     
-
-
+    def _get_patient_disease(self, doc):
+        for pat in self:
+            diagnosis =  self.env['hr.hospital.diagnosis'].search([('doctor_id', '=', doc.id), 
+                                                                ('patient_id', '=', pat.id)])    
+            if diagnosis:
+                return diagnosis.degree_of_morbidity 
+            else:
+                'other'  

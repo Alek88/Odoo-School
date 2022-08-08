@@ -1,111 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id='menu_hr_hospital'
+        <menuitem id='menu_hr_hospital_root'
                 name='Hospital'
                 sequence='0'
                 />
 
-    <menuitem id='menu_hr_treatment'
+                
+        <menuitem id='menu_hr_treatment'
                 name='Treatment'
-                parent='menu_hr_hospital'
+                parent='menu_hr_hospital_root'
+                sequence='200'
+                />
+
+        <menuitem id='menu_hr_diagnoses'
+                name='Diagnoses'
+                parent='menu_hr_hospital_root'
+                sequence='300'
+                />
+
+        <!-- Hpspital -->
+
+        <menuitem id='menu_hr_hospital'
+                name='Hospital'
+                parent='menu_hr_hospital_root'
+                action='action_hr_hospital'
                 sequence='100'
                 />
 
-    <menuitem id='menu_hr_diagnoses'
-            name='Diagnoses'
-            parent='menu_hr_hospital'
-            sequence='200'
-            />
+        <!-- Treatment -->
 
-    <!-- Treatment -->
-
-    <menuitem id='menu_patient'
+        <menuitem id='menu_patient'
                 name='Patients'
                 parent='menu_hr_treatment'
                 action='action_patient'
                 sequence='100'
                 />
 
-    <menuitem id='menu_doctor'
+        <menuitem id='menu_doctor'
                 name='Doctors'
                 parent='menu_hr_treatment'
                 action='action_doctor'
                 sequence='200'
                 />
 
-    <menuitem id='menu_doctor_visit'
+        <menuitem id='menu_doctor_visit'
                 name="Doctor's visit"
                 parent='menu_hr_treatment'
                 action='action_doctor_visit'
                 sequence='300'
                 />
 
-    <menuitem id='menu_patientcard'
+        <menuitem id='menu_patientcard'
                 name='Patient card'
                 parent='menu_hr_treatment'
                 action='action_patient_card'
                 sequence='400'
                 />
     
-    <menuitem id='menu_personal_doctor_history'
+        <menuitem id='menu_personal_doctor_history'
                 name="Personal doctor history"
                 parent='menu_hr_treatment'
                 action='action_personal_doctor_history'
                 sequence='500'
                 />
     
-    <menuitem id='menu_contact_person'
+         <menuitem id='menu_contact_person'
                 name='Contact person'
                 parent='menu_hr_treatment'
                 action='action_contact_person'
                 sequence='600'
                 />
 
-    <!-- Diagnoses -->
+        <!-- Diagnoses -->
 
-    <menuitem id='menu_diagnosis'
+         <menuitem id='menu_diagnosis'
                 name='Diagnoses'
                 parent='menu_hr_diagnoses'
                 action='action_diagnosis'
                 sequence='100'
                 />
 
-    <menuitem id='menu_disease'
+         <menuitem id='menu_disease'
                 name='Disease'
                 parent='menu_hr_diagnoses'
                 action='action_disease'
                 sequence='200'
                 />
 
-    <menuitem id='menu_research'
+         <menuitem id='menu_research'
                 name="Research"
                 parent='menu_hr_diagnoses'
                 action='action_research'
                 sequence='300'
                 />
 
-    <menuitem id='menu_type_of_research'
+        <menuitem id='menu_type_of_research'
                 name="Type of research"
                 parent='menu_hr_diagnoses'
                 action='action_type_of_research'
                 sequence='400'
                 />
 
-    <menuitem id='menu_type_of_sample'
+        <menuitem id='menu_type_of_sample'
                 name="Type of sample"
                 parent='menu_hr_diagnoses'
                 action='action_type_of_sample'
                 sequence='500'
                 />
     
-    <menuitem id='menu_type_of_analisis'
+        <menuitem id='menu_type_of_analisis'
                 name="Analisis"
                 parent='menu_hr_diagnoses'
                 action='action_analisis'
                 sequence='600'
                 />
 
-    <menuitem id='menu_type_of_disease_history'
+        <menuitem id='menu_type_of_disease_history'
                 name="Disease history"
                 parent='menu_hr_diagnoses'
                 action='action_disease_history'

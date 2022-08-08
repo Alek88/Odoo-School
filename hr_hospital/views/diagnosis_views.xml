@@ -24,6 +24,7 @@
                 <group>
                     <field name="name"/>
                     <field name="diagnisis_date"/>
+                    <field name="degree_of_morbidity"/>
                 </group>
                 <notebook>
                     <sheet string="Data">

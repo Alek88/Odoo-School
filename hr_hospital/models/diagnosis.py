@@ -1,5 +1,5 @@
 from typing_extensions import Required
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -27,6 +27,10 @@ class HrHospitalDiagnosis(models.Model):
     diagnisis_date = fields.Date(string='Diagnisis date', 
                                  default=fields.Date.today, 
                                  required=True)
+    degree_of_morbidity = fields.Selection([('mild', _('A mild form')), 
+                                            ('average', _('A average form')),
+                                            ('severe', _('A severe form'))], 
+                                            required=True)
     
     comment = fields.Text(size=200)
     

@@ -17,6 +17,7 @@
         'security/ir.model.access.csv',
         'vizard/adding_doctor_vizard_views.xml',
         'vizard/new_doctor_visit_vizard_views.xml',
+        'views/hr_hospital_views.xml',
         'views/personal_doctor_history_view.xml',
         'views/disease_history_views.xml',
         'views/doctor_views.xml',
@@ -30,7 +31,9 @@
         'views/research_views.xml',
         'views/type_of_research_views.xml',
         'views/type_of_sample_views.xml',
-        'views/hr_hospital_menus.xml',     
+        'views/hr_hospital_menus.xml',
+        'report/doctor_report.xml',   
+        'report/doctor_template.xml',        
     ],
     'support': 'support@hr_hospital.biz',
 }

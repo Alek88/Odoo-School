@@ -9,6 +9,8 @@ class HrHospitalDoctor(models.Model):
     active = fields.Boolean(default=True)
     speciality = fields.Char()
     is_intern = fields.Boolean()
+    hospital = fields.Many2one(comodel_name='hr.hospital',
+                               required=True)
     mentor_id=fields.Many2one(comodel_name='hr.hospital.doctor',
                               string='Mentor',      
                               domain=[('is_intern', '=', False)])
@@ -20,7 +22,7 @@ class HrHospitalDoctor(models.Model):
     
     patient_ids = fields.One2many(comodel_name='hr.hospital.patient',
                                   inverse_name='doctor_id')
-                                  
+    activity_history = fields.Text(string='Activity history')                            
                                
     @api.constrains('mentor_id')
     def cheking_mentor_id(self):

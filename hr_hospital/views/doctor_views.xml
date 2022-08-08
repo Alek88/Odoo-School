@@ -11,6 +11,8 @@
                 <field name="gender"/>
                 <field name="phone"/>
                 <field name="email"/>
+                <field name='hospital'/>
+                <field name="activity_history"/>
             </tree>
         </field>
     </record>
@@ -22,6 +24,7 @@
             <form>
                 <h2><field name="name"/></h2>
                 <group>
+                    <field name='hospital'/>
                     <field name="speciality"/>
                     <field name="gender"/>
                     <field name="is_intern"/>
@@ -35,25 +38,27 @@
                         <field name="mentor_id"/>    
                     </page>
                     <page string="Interns" attrs="{'invisible':[('is_intern','=',True)]}">
-                        <field name="intern_ids" mode="kanban"/>
+                       <field name="intern_ids" mode="kanban"/>
+                       <!-- 
                         <kanban>
-                            <fields name="name"/>
-                            <fields name="phone"/> 
-                            <fields name="email"/> 
                             <templetes>
                                 <t t-name="kanban-box">
                                     <div t-att-class="oe_kanban_card oe_kanban_global_click">
                                         <div class="oe_kanban_details">
-                                            <fields name="name"/>
-                                            <fields name="phone"/>
+                                            <field name="name"/>
+                                            <field name="phone"/>
                                         </div>
                                     </div>  
                                 </t>
                             </templetes>
                         </kanban>
+                        -->
                     </page>
                     <page string="Patients">
                         <field name="patient_ids"/> 
+                    </page>
+                    <page string="Activity history">
+                        <field name="activity_history"/>
                     </page>
                 </notebook>
             </form>
@@ -66,12 +71,53 @@
         <field name="arch" type="xml">
             <kanban default_group_by="speciality">
                 <templates>
-                    <field name='name'/>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click">
-                            <field name="name"/>
-                            <button type='action'  
-                                name='%(hr_hospital.action_new_doctor_visit_with_doctor_vizard)d'>New doctor visit</button>
+                            <div class="o_canban_card_header_title">
+                                <div>
+                                    <strong>Name: </strong>
+                                    <field name='name'/>
+                                    <br/>
+                                    <strong>Speciality: </strong>
+                                    <field name='speciality'/>
+                                </div>    
+                            </div>
+                            <div class="o_dropdown_kanban dropdown">
+                                <a class="dropdown-toggle btn"
+                                    data-toggle="dropdown" href="#">
+                                    <span class="fa fa-ellipsis-v" aria-hidden="true"/>
+                                </a>
+                                <div class="o_canban_card_manage_setting row mt16">
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                        </t>  
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xs-12" style="height: 15px;"/>
+
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_left">
+                                        <button class="btn btn-primary"
+                                                string="Quick appointment"
+                                                name='%(hr_hospital.action_new_doctor_visit_with_doctor_vizard)d'
+                                                type="action">
+                                            <span>Quick appointment</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6 o_kanban_primary_right">
+                                        <strong>Patients: </strong>
+                                        <field name="patient_ids"
+                                               widget="many2many_tags"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </t>
                 </templates>
@@ -95,7 +141,7 @@
     <record id='action_doctor' model='ir.actions.act_window'> 
         <field name='name'>Doctors</field>
         <field name='res_model'>hr.hospital.doctor</field> 
-        <field name='view_mode'>kanban,tree,form</field>
+        <field name='view_mode'>tree,form,kanban</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 This list will display the doctors of our hospital.
