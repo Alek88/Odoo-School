@@ -39,20 +39,6 @@
                     </page>
                     <page string="Interns" attrs="{'invisible':[('is_intern','=',True)]}">
                        <field name="intern_ids" mode="kanban"/>
-                       <!-- 
-                        <kanban>
-                            <templetes>
-                                <t t-name="kanban-box">
-                                    <div t-att-class="oe_kanban_card oe_kanban_global_click">
-                                        <div class="oe_kanban_details">
-                                            <field name="name"/>
-                                            <field name="phone"/>
-                                        </div>
-                                    </div>  
-                                </t>
-                            </templetes>
-                        </kanban>
-                        -->
                     </page>
                     <page string="Patients">
                         <field name="patient_ids"/> 
