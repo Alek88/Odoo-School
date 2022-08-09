@@ -1,4 +1,3 @@
-from webbrowser import get
 from odoo import models, fields, api
 from dateutil.relativedelta import relativedelta
 

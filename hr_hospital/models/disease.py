@@ -1,4 +1,3 @@
-from xml.dom import ValidationErr
 from odoo import _, models, fields, api
 from odoo.exceptions import ValidationError
 
