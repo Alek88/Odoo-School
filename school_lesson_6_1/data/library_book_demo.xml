@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="library_book_call_ancestors_demo" model="library.book">
+        <field name="name">The Call of the Wild</field>
+        <field name="category_ids" 
+            eval="[Command.link(ref('school_lesson_6_1.library_book_category_story_data'))]"/>
+        <field name="user_id" ref="base.user_demo"/>
+    </record>
+
+    <record id="library_book_marusia_churai_demo" model="library.book">
+        <field name="name">Marusia Churai</field>
+        <field name="category_ids" 
+            eval="[Command.link(ref('school_lesson_6_1.library_book_category_love_novel_data'))]"/>
+        <field name="user_id" ref="base.user_demo"/>
+    </record>
+
+    <record id="library_book_vingt_mille_demo" model="library.book">
+        <field name="name">Vingt mille lieues sous les mers</field>
+        <field name="category_ids" 
+            eval="[Command.link(ref('school_lesson_6_1.library_book_category_fantasy_data'))]"/>
+        <field name="user_id" ref="base.user_demo"/>
+    </record>
+
+    <record id="school_lesson_6_1.library_book_call_ancestors_demo" model="library.book">
+        <field name="name">The Call of the Wild (not available!!!) </field>
+    </record> 
+    
+    <delete id="school_lesson_6_1.library_book_vingt_mille_demo" model="library.book"/>
+</odoo>
