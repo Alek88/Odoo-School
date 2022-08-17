@@ -15,8 +15,4 @@
         <field name="active" eval="True"/>
     </record> 
 
-    <record id="school_lesson_6_1.library_book_call_ancestors_demo" model="library.book">
-        <field name="name">The Call of the Wild (not available!!!) </field>
-    </record>
-    
 </odoo>

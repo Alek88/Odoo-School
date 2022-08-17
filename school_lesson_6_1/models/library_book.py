@@ -6,7 +6,7 @@ class LibraryBook(models.Model):
     _description = 'Library Books'
 
     name = fields.Char('Title')
-    category_id = fields.Many2one(comodel_name='library.book.category')
+    
     reader_id = fields.Many2one(
         comodel_name='res.partner',
         string='Reader',
@@ -22,9 +22,9 @@ class LibraryBook(models.Model):
     )
     
     category_ids = fields.Many2many(comodel_name='library.book.category',
-                                relation = 'library_book_book_category',
-                                column1 = 'category_name',
-                                column2 = 'book_name')
+                                relation='library_book_book_category',
+                                column1='category_name',
+                                column2='book_name')
 
     @api.onchange('reader_id')
     def _onchange_reader_id(self):

@@ -1,5 +1,5 @@
 from email.policy import default
-from odoo import fields, models
+from odoo import fields, models, _
 from datetime import datetime, timedelta
 
 
@@ -7,8 +7,8 @@ class LibraryAuthor(models.Model):
     _name = 'library.author'
     _description = 'Library Book Authors'
 
-    first_name = fields.Char(required=True)
-    last_name = fields.Char(required=True)
+    first_name = fields.Char(required=True, translate=True)
+    last_name = fields.Char(required=True, translate=True)
     birth_date = fields.Date('Birthday')
     
     is_write_intern = fields.Boolean(compute='_is_allowed_to_change')
@@ -27,4 +27,4 @@ class LibraryAuthor(models.Model):
         
     def _is_allowed_to_change(self):
         for record in self:
-            record.is_write_intern = record.create_date > datetime.now() - timedelta(days=30)   
+            record.is_write_intern = datetime.now() - timedelta(days=30)   

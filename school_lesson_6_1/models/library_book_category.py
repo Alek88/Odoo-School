@@ -7,6 +7,6 @@ class LibraryBookCategory(models.Model):
     name = fields.Char()
     active = fields.Boolean(default=True)
     book_ids = fields.Many2many(comodel_name='library.book',
-                                relation = 'library_book_book_category',
-                                column1 = 'book_name',
-                                column2 = 'category_name')
+                                relation='library_book_book_category',
+                                column1='book_name',
+                                column2='category_name')
