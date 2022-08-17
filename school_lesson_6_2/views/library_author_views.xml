@@ -22,7 +22,7 @@
                         </h3>
                     </div>
                     <group>
-                        <field name="birth_date" />
+                        <field name="birth_date" /> 
                     </group>
                 </sheet>
             </form>
