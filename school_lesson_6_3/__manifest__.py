@@ -4,24 +4,23 @@
 
 {
     'name': 'School Lesson 6 3',
-    'version': '15.0.0.0.1',
+    'version': '15.0.0.0.2',
     'category': 'Extra Tools',
     'summary': """
         Odoo School
         Lesson 6-3: Translating. 
-        Create A.Hurin
     """,
     'license': 'LGPL-3',
-    'author': 'Garazd Creation',
-    'website': 'https://garazd.biz',
+    'author': 'Aleksander Huryn',
     'depends': [
         'school_lesson_6_2',
     ],
     'data': [
         'views/library_book_views.xml',
         'views/library_author_views.xml',
+        'views/library_category_views.xml',
     ],
-    'support': 'support@garazd.biz',
+    'support': 'gurin.alek@gmail.com',
     'application': False,
     'installable': True,
     'auto_install': False,
