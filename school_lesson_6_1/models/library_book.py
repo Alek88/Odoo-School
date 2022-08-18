@@ -21,10 +21,7 @@ class LibraryBook(models.Model):
         default=True,
     )
     
-    category_ids = fields.Many2many(comodel_name='library.book.category',
-                                relation='library_book_book_category',
-                                column1='category_name',
-                                column2='book_name')
+    category_ids = fields.Many2many(comodel_name='library.book.category')
 
     @api.onchange('reader_id')
     def _onchange_reader_id(self):

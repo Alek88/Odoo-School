@@ -16,9 +16,10 @@
         <field name="model">library.book.category</field>
         <field name="arch" type="xml">
             <form>
-                <field name="active" invisible="1"/>
-                <field name="name"/> 
-                <field name="book_ids"/>        
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <field name="name"/> 
+                </sheet>
             </form>
         </field>
     </record>
