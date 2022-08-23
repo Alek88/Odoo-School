@@ -16,4 +16,7 @@ class TestAccessRights(TestCommon):
         # A library admin can return a book
         self.book_demo.with_user(self.library_admin).action_take_in()
         self.assertFalse(self.book_demo.reader_id)
-
+        
+    def test_action_scrap_book(self):
+        self.book_demo.with_user(self.library_user).action_scrap_book()
+        self.assertFalse(self.book_demo.active)
